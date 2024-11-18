@@ -1,7 +1,8 @@
-.ServiHome {
+.login-page {
   font-family: Arial, sans-serif;
-  width: 100%;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 header {
@@ -12,7 +13,7 @@ header {
 
 .logo img {
   max-width: 5cm;
-  width: 100%; 
+  width: 100%;
   height: auto;
   object-fit: contain;
 }
@@ -21,7 +22,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 10vh;
 }
 
 .nav-links {
@@ -32,8 +32,8 @@ header {
 }
 
 .nav-link {
+
   color: white;
-  font-size: 15px;
   text-decoration: none;
   font-weight: bold;
 }
@@ -56,169 +56,124 @@ header {
   transition: background-color 0.3s;
 }
 
-/* Sección de servicios */
-.services-section {
-  background-color: rgb(228, 228, 228);
-  padding: 40px 20px;
-  text-align: center;
-  min-height: 60vh
-}
-
-.services-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-}
-
-.services-grid {
-  display: grid; 
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.service-card {
-  background-color: white;
-  padding: 18px;
-  border-radius: 10px;
-  box-shadow: 0 10px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 15px rgba(0, 0, 0, 0.1);
-}
-
-.service-image img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.service-info h3 {
-  font-size: 1.5rem;
-  margin-top: 15px;
-}
-
-.service-info p {
-  color: #555;
-  margin-top: -12px;
-}
-
-.btn-secondary {
-  background-color: #FFA000;
-  color: white;
-  padding: 10px 20px;
-  font-weight: bold;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-.btn-secondary:hover {
-  background-color: #DCAE1D;
-}
-
-/* Modal */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+/* Estilos para el formulario de login */
+.forml {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  flex-grow: 1;
+  padding: 70px;
+  background-color: #dedede;
 }
 
-.modal {
-  background-color: white;
-  padding: 30px;
+.login-form-container {
+  max-width: 450px;  
+  width: 100%;
+  padding: 40px;     
   border-radius: 10px;
-  width: 80%;
-  max-width: 800px;
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
-  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  background-color: white;
 }
 
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.modal-logo img {
-  max-width: 4.3cm;
-  height: auto;
-}
-
-.modal-icon i {
+h2 {
   font-size: 2rem;
-  color: #3c763d; 
-  margin-left: 10px;
+  font-weight: bold;
+  color: #004D4D;
+  margin-bottom: 20px; 
+  text-align: center;
 }
 
-.modal h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.modal p {
-  font-size: 1rem;
+p {
   color: #555;
+  font-size: 1rem;
+  margin-bottom: 25px; 
+  text-align: center;
 }
 
-.modal .service-benefits,
-.modal .service-features {
-  margin-top: 20px;
+.form-group {
+  margin-bottom: 25px;  
 }
 
-.modal .service-benefits ul,
-.modal .service-features ul {
-  list-style-type: disc;
-  padding-left: 20px;
+.form-group label {
+  display: block;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 10px;  
 }
 
-.modal button {
+.form-group input {
+  width: 100%;
+  padding: 15px;       
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  border-color: #FFA000;
+  outline: none;
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 30px;    
+}
+
+.signup-link .link {
+  color: #004D4D;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.signup-link .link:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para el botón de inicio de sesión */
+button.btn-login {
+  width: 100%;
   background-color: #FFA000;
   color: black;
-  padding: 10px 20px;
+  padding: 15px 20px;   
+  font-weight: bold;
   border-radius: 5px;
   border: none;
-  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   cursor: pointer;
+  transition: background-color 0.3s;
+  box-sizing: border-box;
 }
 
-.modal button:hover {
+button.btn-login:hover {
   background-color: #DCAE1D;
-  transition: background-color 0.3s;
+}
+
+button.btn-login:focus {
+  outline: none;
 }
 
 /* Pie de página */
 .footer {
   background-color: #015252;
   color: white;
-  padding: 20px;
+  padding: 40px 20px;
   font-family: Arial, sans-serif;
-  min-height: 10vh
+  min-height: 24vh;
 }
 
 .footer-content {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
   flex-wrap: wrap;
   gap: 50px;
-  min-height: 10vh
 }
 
 .footer-logo img {
-  margin-top: 15px;
   max-width: 5cm;
-  width: 100%; 
+  width: 100%;
   height: auto;
   object-fit: contain;
 }
@@ -289,13 +244,12 @@ header {
   background-color: #004D4D;
   text-align: center;
   margin-top: 30px;
-  padding: 10px 10px;
+  padding: 10px 0;
 }
 
 .footer-bottom p {
   font-size: 0.9rem;
   margin: 0;
-  padding: 10px 0;
 }
 
 @media (max-width: 768px) {

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Share2, MessageCircle } from 'lucide-react';
-import './galeria.css'; // Aquí es donde van tus estilos personalizados
-
+import './galeria.css'; 
 const imagenesGaleria = [
   {
     id: 1,
@@ -195,6 +194,7 @@ function GaleriaImagenes() {
       <main className="content">
         <section className="gallery-section">
           <h2>Galería de Proyectos y Cultivos</h2>
+          <p>Dale click a cualquiera de nuestros Fotos para ver mas informacion</p>
           <div className="gallery-grid">
             {imagenesGaleria.map((imagen) => (
               <div key={imagen.id} className="gallery-card" onClick={() => handleSelectImage(imagen)}>

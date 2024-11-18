@@ -12,7 +12,7 @@ header {
 
 .logo img {
   max-width: 5cm;
-  width: 100%; 
+  width: 100%;
   height: auto;
   object-fit: contain;
 }
@@ -190,7 +190,7 @@ header {
 
 .modal-icon i {
   font-size: 2rem;
-  color: #3c763d; 
+  color: #3c763d;
   margin-left: 10px;
 }
 
@@ -217,6 +217,7 @@ header {
   margin-bottom: 10px;
 }
 
+/* Botones dentro del modal */
 .modal button {
   background-color: #FFA000;
   color: black;
@@ -226,11 +227,90 @@ header {
   font-weight: bold;
   cursor: pointer;
   margin-top: 20px;
+  transition: background-color 0.3s;
 }
 
 .modal button:hover {
-  background-color: #DCAE1D;
+  background-color: #FFA000;
   transition: background-color 0.3s;
+}
+
+/* Contenedor de botones en el modal (Separados horizontalmente) */
+.modal .button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 200px;
+  margin-top: 20px;
+}
+
+button.btn-primary,
+button.btn-secondary {
+  background-color: #FFA000;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 48%;
+}
+
+button.btn-secondary {
+  background-color: #ccc;
+}
+
+button.btn-primary:hover,
+button.btn-secondary:hover {
+  opacity: 0.9;
+}
+
+/* Estilo de los formularios de inscripción */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+button.btn-primary {
+  background-color: #FFA000;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.btn-secondary {
+  background-color: #ccc;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.btn-primary:hover,
+button.btn-secondary:hover {
+  opacity: 0.9;
+}
+
+/* Alineación de los botones del formulario de inscripción horizontalmente */
+.form-group .button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 20px;
+  padding-right: 150px;
+}
+
+button.btn-primary,
+button.btn-secondary {
+  width: 38%;
 }
 
 /* Pie de página */

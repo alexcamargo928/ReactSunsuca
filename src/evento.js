@@ -1,13 +1,11 @@
-'use client'
-
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
-import { CalendarIcon, MapPin, Users, Video } from 'lucide-react'
+import { CalendarIcon, MapPin, Video } from 'lucide-react'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import './eventos.css'
+import Swal from 'sweetalert2';
+import './eventos.css' 
 
-// Datos de ejemplo para los eventos
 const eventos = [
   {
     id: 1,
@@ -140,7 +138,14 @@ const eventos = [
 function Eventos() {
   const [eventoSeleccionado, setEventoSeleccionado] = useState(null)
   const [modalVisible, setModalVisible] = useState(false)
-  const [filtro, setFiltro] = useState('todos') // Filtro para modalidad
+  const [filtro, setFiltro] = useState('todos')
+  const [inscripcionFormVisible, setInscripcionFormVisible] = useState(false)
+  const [formData, setFormData] = useState({
+    nombre: '',
+    email: '',
+    telefono: ''
+  })
+  const [inscripcionExitoso, setInscripcionExitoso] = useState(false)
 
   const eventosFiltrados = eventos.filter(evento => {
     if (filtro === 'todos') return true
@@ -150,23 +155,57 @@ function Eventos() {
   const handleSelectEvent = (id) => {
     const evento = eventos.find(ev => ev.id === id)
     setEventoSeleccionado(evento)
-    setModalVisible(true) // Mostrar el modal
+    setModalVisible(true)
   }
 
   const handleCloseModal = () => {
-    setModalVisible(false) // Cerrar el modal
+    setModalVisible(false)
+    setInscripcionFormVisible(false)  // Cerrar también el formulario si es que está abierto
   }
 
-  // Modal
+  // Manejar el cambio en el formulario
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setFormData({
+      ...formData,
+      [name]: value
+    })
+  }
+
+  // Manejar el envío del formulario
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "Confirmando este formulario procederás con la inscripción.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setInscripcionExitoso(true); 
+        setInscripcionFormVisible(false);
+        setFormData({ nombre: '', email: '', telefono: '' });
+        Swal.fire({
+          title: '¡Inscripción exitosa!',
+          text: '¡Gracias por registrarte!',
+          icon: 'success',
+          confirmButtonText: 'Cerrar'
+        });
+      }
+    });
+  };
+  
+  // Modal para ver detalles del evento
   const modalContent = eventoSeleccionado && (
     <div className="modal-overlay">
       <div className="modal">
-        {/* Logo de la empresa */}
         <div className="modal-header">
           <div className="modal-logo">
             <img src="/logo2.png" alt="Logo de la empresa" />
           </div>
-          {/* Icono de hoja */}
           <div className="modal-icon">
             <i className="fas fa-calendar-alt"></i>
           </div>
@@ -181,7 +220,6 @@ function Eventos() {
           <p><strong>Ubicación:</strong> {eventoSeleccionado.ubicacion}</p>
           <p><strong>Cupos disponibles:</strong> {eventoSeleccionado.cupos}</p>
           <p><strong>Costo:</strong> ${eventoSeleccionado.costo}</p>
-          
           <div className="event-agenda">
             <h3>Agenda:</h3>
             <ul>
@@ -191,14 +229,76 @@ function Eventos() {
             </ul>
           </div>
         </div>
-        
-        <button className="btn-primary" onClick={handleCloseModal}>
-          Cerrar
-        </button>
+        <div class="button-container">
+          <button className="btn-primary" onClick={() => setInscripcionFormVisible(true)}>
+            Inscribirse
+          </button>
+          <button className="btn-secondary" onClick={handleCloseModal}>
+            Cerrar
+          </button>
+        </div>
       </div>
     </div>
   )
-  
+
+  // Modal para el formulario de inscripción
+  const inscripcionModal = inscripcionFormVisible && (
+    <div className="modal-overlay">
+      <div className="modal">
+        <div className="modal-header">
+          <div className="modal-logo">
+            <img src="/logo2.png" alt="Logo de la empresa" />
+          </div>
+          <div className="modal-icon">
+            <i className="fas fa-leaf"></i>
+          </div>
+        </div>
+        <h3>Formulario de Inscripción</h3>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="nombre">Nombre</label>
+            <input 
+              type="text" 
+              id="nombre" 
+              name="nombre" 
+              value={formData.nombre} 
+              onChange={handleInputChange} 
+              required 
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Correo electrónico</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              value={formData.email} 
+              onChange={handleInputChange} 
+              required 
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="telefono">Teléfono</label>
+            <input 
+              type="tel" 
+              id="telefono" 
+              name="telefono" 
+              value={formData.telefono} 
+              onChange={handleInputChange} 
+              required 
+            />
+          </div>
+          <div class="button-container">
+            <button type="submit" class="btn-primary">Enviar</button>
+            <button className="btn-secondary" onClick={handleCloseModal}>Cerrar</button>
+          </div>
+        </form>
+        
+        
+      </div>
+    </div>
+  )
+
   return (
     <div className="EventosHome">
       <header>
@@ -220,8 +320,8 @@ function Eventos() {
       <main className="main-content">
         <section className="events-section">
           <h2>Eventos y Capacitación</h2>
+          <p>Dale click a cualquiera de nuestros Eventos y Capacitaciónes para ver mas informacion</p>
           
-          {/* Filtros de modalidad */}
           <div className="filters">
             <button onClick={() => setFiltro('todos')} className={filtro === 'todos' ? 'active' : ''}>Todos</button>
             <button onClick={() => setFiltro('presencial')} className={filtro === 'presencial' ? 'active' : ''}>Presencial</button>
@@ -255,8 +355,9 @@ function Eventos() {
           </div>
         </section>
 
-        {/* Usar Portal para mostrar el modal */}
+        {/* Mostrar los modales */}
         {modalVisible && ReactDOM.createPortal(modalContent, document.body)}
+        {inscripcionFormVisible && ReactDOM.createPortal(inscripcionModal, document.body)}
       </main>
 
       <footer className="footer">
@@ -264,7 +365,6 @@ function Eventos() {
           <div className="footer-logo">
             <img src="/logo.png" alt="SUNSUCA Logo" />
           </div>
-
           <div className="footer-contact">
             <h3>Contacto</h3>
             <ul>
@@ -273,7 +373,6 @@ function Eventos() {
               <li>123 Calle Principal, Ciudad, País</li>
             </ul>
           </div>
-
           <div className="footer-social">
             <h3>Síguenos</h3>
             <div className="social-icons">

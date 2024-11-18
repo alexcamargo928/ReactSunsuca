@@ -75,7 +75,7 @@ function HomePage() {
         <section className="cta-section">
           <h2>¿Listo para transformar tu agricultura?</h2>
           <div className="cta-buttons">
-            <a href="/servicios" className="btn-secondary">Ver Catálogo</a>
+            <a href="/servicios" className="btn-secondary">Ver Servicios</a>
           </div>
         </section>
       </main>

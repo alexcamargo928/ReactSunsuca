@@ -57,7 +57,7 @@ header {
 }
   
 /* Sección de introducción */
-.intro-section {
+.intro-section {  
   background-color: #005454;
   color: white;
   text-align: center;
@@ -71,10 +71,12 @@ header {
 
 .intro-section h2 {
   font-size: 2.5rem;
+  color: rgb(234, 232, 232);
 }
   
 .intro-section p {
   font-size: 1.2rem;
+  color: rgba(234, 232, 232, 0.835);
 }
   
 .btn-primary {
@@ -164,6 +166,10 @@ header {
   text-align: center;
   padding: 50px 20px;
   min-height: 5vh
+}
+
+.cta-section h2 {
+  color: rgb(234, 232, 232);
 }
   
 .cta-buttons a {
