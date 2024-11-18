@@ -17,13 +17,12 @@ function HomePage() {
             <li><a href="/servicios" className="nav-link">Servicios</a></li>
             <li><a href="/galeria" className="nav-link">Galería</a></li>
             <li><a href="/eventos" className="nav-link">Eventos</a></li>
-            <li><a href="/nosotros" className="nav-link">Nosotros</a></li>
             <li><a href="/login" className="btn-login">Iniciar Sesión</a></li>
           </ul>
         </nav>
       </header>
 
-      <main className="main-content">
+      <main className="gallery-content">
         <section className="intro-section">
           <h1>Sunsuca</h1>
           <h2>Tecnología Agroecológica para un Futuro Sostenible</h2>
@@ -34,7 +33,6 @@ function HomePage() {
         <section className="services-section">
           <h2>Servicios Destacados</h2>
           <div className="services-grid">
-              {/* Primer Servicio */}
               <div className="service-card">
                 <div className="service-image">
                   <img src="/SembradoE.jpg" alt="Sembrado Ecológico" />
@@ -44,7 +42,6 @@ function HomePage() {
                 </div>
               </div>
 
-              {/* Segundo Servicio */}
               <div className="service-card">
                 <div className="service-image">
                   <img src="/RiegoA.jpg" alt="Riego Automático" />
@@ -54,7 +51,6 @@ function HomePage() {
                 </div>
               </div>
 
-              {/* Tercer Servicio */}
               <div className="service-card">
                 <div className="service-image">
                   <img src="/CuidadoA.jpg" alt="Cuidado Del Medio Ambiente" />
@@ -64,7 +60,6 @@ function HomePage() {
                 </div>
               </div>
 
-              {/* Cuarto Servicio */}
               <div className="service-card">
                 <div className="service-image">
                   <img src="/Procesasimiento.png" alt="Procesamiento de Residuos" />
@@ -91,7 +86,6 @@ function HomePage() {
             <img src="/logo.png" alt="SUNSUCA Logo" />
           </div>
           
-          {/* Sección de Contacto */}
           <div className="footer-contact">
             <h3>Contacto</h3>
             <ul>
@@ -101,7 +95,6 @@ function HomePage() {
             </ul>
           </div>
           
-          {/* Sección de Redes Sociales */}
           <div className="footer-social">
             <h3>Síguenos</h3>
             <div className="social-icons">
@@ -122,7 +115,7 @@ function HomePage() {
           <p>&copy; 2024 SUNSUCA. Todos los derechos reservados.</p>
         </div>
       </footer>
-
+      
     </div>
   );
 }
